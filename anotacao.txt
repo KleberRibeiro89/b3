@@ -1,0 +1,9 @@
+criação da webAPi
+dotnet new classlib -o B3.Domain
+dotnet new webapi -o B3.Api
+dotnet new xunit -o B3.Domain.Test
+
+dotnet new sln
+dotnet sln add .\B3.Domain\B3.Domain.csproj
+dotnet sln add .\B3.Api\B3.Api.csproj
+dotnet sln add .\B3.Domain.Test\B3.Domain.Test.csproj
