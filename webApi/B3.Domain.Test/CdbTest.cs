@@ -133,5 +133,53 @@ namespace B3.Domain.Test
             //Assert
             Assert.True(cmd.IsValid);
         }
+
+
+        [Fact]
+        public void ValidarCalcularCdbCommandComPrazoIgual1()
+        {
+            //Arange
+            var cmd = new CalcularCdbCommand();
+            cmd.Prazo = 1;
+            cmd.ValorAplicado = 100;
+
+            //Act
+            cmd.Validar();
+
+            //Assert
+            Assert.False(cmd.IsValid);
+        }
+
+        [Fact]
+        public void ValidarCalcularCdbCommandComPrazoMenorQue1()
+        {
+            //Arange
+            var cmd = new CalcularCdbCommand();
+            cmd.Prazo = 0;
+            cmd.ValorAplicado = 100;
+
+            //Act
+            cmd.Validar();
+
+            //Assert
+            Assert.False(cmd.IsValid);
+        }
+
+
+
+        [Fact]
+        public void ValidarCalcularCdbCommandComValorIgual0()
+        {
+            //Arange
+            var cmd = new CalcularCdbCommand();
+            cmd.Prazo = 12;
+            cmd.ValorAplicado = 0;
+
+            //Act
+            cmd.Validar();
+
+            //Assert
+            Assert.False(cmd.IsValid);
+        }
     }
 }
