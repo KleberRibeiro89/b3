@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace B3.Domain.Commands
 {
-    public class ICommandResult
+    public abstract class CommandResult
     {
+
         public bool Success { get; set; }
-        public string Message { get; set; }
-        public IReadOnlyCollection<Flunt.Notifications.Notification> Data { get; set; }
+        public string Message { get; set; } = string.Empty;
+        public IReadOnlyCollection<Flunt.Notifications.Notification> Data { get; set; } = new List<Flunt.Notifications.Notification>();
     }
 }

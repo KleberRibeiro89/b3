@@ -37,12 +37,12 @@ namespace B3.Domain.Services.Implementation
 
             return new CalcularCdbCommandResult
             {
-                Bruto = valorBruto,
+                Bruto = Math.Round(valorBruto,2),
                 Liquido = CalcularIr(new CalcularIrCommand 
                 { 
                     Bruto = valorBruto,
                     Prazo = command.Prazo, 
-                    ValorAplicado = command.Prazo
+                    ValorAplicado = command.ValorAplicado
                 })
             };
 
@@ -51,27 +51,28 @@ namespace B3.Domain.Services.Implementation
         public decimal CalcularIr(CalcularIrCommand command)
         {
             var lucro = command.Bruto - command.ValorAplicado;
-            decimal valorLiquido = decimal.Zero;
+            decimal imposto = decimal.Zero;
             if (command.Prazo <= 6)
             {
-                valorLiquido = (command.ValorAplicado + lucro) - (lucro * (22.5M / 100));
+                imposto = lucro * (22.5M / 100);
             }
 
             if (command.Prazo > 6 && command.Prazo <= 12)
             {
-                valorLiquido = (command.ValorAplicado + lucro) - (lucro * (20M / 100));
+                imposto = lucro * (20M / 100);
             }
 
             if (command.Prazo > 12 && command.Prazo <= 24)
             {
-                valorLiquido = (command.ValorAplicado + lucro) - (lucro * (17.5M / 100));
+                imposto = lucro * (17.5M / 100);
             }
 
             if (command.Prazo > 24)
             {
-                valorLiquido = (command.ValorAplicado + lucro) - (lucro * (15M / 100));
+                imposto = lucro * (15M / 100);
             }
-            return valorLiquido;
+
+            return Math.Round(command.Bruto - imposto, 2);
         }
     }
 }

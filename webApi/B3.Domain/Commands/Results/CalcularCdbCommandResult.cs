@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace B3.Domain.Commands.Results
 {
-    public class CalcularCdbCommandResult : ICommandResult
+    public class CalcularCdbCommandResult : CommandResult
     {
         public CalcularCdbCommandResult()
         {
