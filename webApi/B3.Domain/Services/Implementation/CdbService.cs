@@ -34,10 +34,11 @@ namespace B3.Domain.Services.Implementation
                 valorBruto *= (1 + (Cdi * Tb));
             }
 
+            valorBruto = Math.Round(valorBruto, 2);
 
             return new CalcularCdbCommandResult
             {
-                Bruto = Math.Round(valorBruto,2),
+                Bruto = valorBruto,
                 Liquido = CalcularIr(new CalcularIrCommand 
                 { 
                     Bruto = valorBruto,

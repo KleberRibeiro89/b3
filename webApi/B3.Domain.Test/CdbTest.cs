@@ -181,18 +181,18 @@ namespace B3.Domain.Test
 
 
         [Theory]
-        [InlineData(6, 100, 106.47, 105.02)]
+        [InlineData(6, 100, 106.47, 105.01)]
         [InlineData(12, 100, 112.35, 109.88)]
-        [InlineData(24, 100, 125.11, 120.71)]
+        [InlineData(24, 100, 125.11, 120.72)]
         [InlineData(25, 100, 126.23, 122.3)]
-        [InlineData(50, 100, 157.92, 149.24)]
+        [InlineData(50, 100, 157.92, 149.23)]
         public void CalcularIr(int prazo, decimal valorAplicado, decimal bruto, decimal valorLiquido)
         {
             //Arange
             var cmd = new CalcularIrCommand();
             cmd.Prazo = prazo;
-            cmd.Bruto = bruto;
             cmd.ValorAplicado = valorAplicado;
+            cmd.Bruto = bruto;
 
             //Act
             ICdbService cdbService = new CdbService();
