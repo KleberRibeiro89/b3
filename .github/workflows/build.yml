@@ -22,7 +22,8 @@ jobs:
           dotnet-version: 7.0.305
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore .\webApi\b3.Api\
+        
       - name: Build
         run: dotnet build .\webApi\b3.Api\ --configuration Release
 
