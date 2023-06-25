@@ -26,7 +26,7 @@ namespace B3.Domain.Test
             //Act
             ICdbService cdbService = new CdbService();
             var result = cdbService.Calcular(cmd);
-            
+
 
             //Assert
             Assert.True(result.Liquido > 0);
@@ -66,19 +66,19 @@ namespace B3.Domain.Test
             var result = cdbService.Calcular(cmd);
 
 
-            
+
             //Assert
             Assert.Equal(expected: "Objeto inválido", result.Message);
 
         }
 
         [Theory]
-        [InlineData(100, 6, 106.47, 105.02)]
-        [InlineData(100, 12, 112.35, 109.88)]
-        [InlineData(100, 24, 125.11, 120.71)]
-        [InlineData(100, 25, 126.23, 122.3)]
-        [InlineData(100, 50, 157.92, 149.24)]
-        public void SolicicarCalculoResultados(decimal valorAplicado, int prazo, Decimal bruto, Decimal liquido)
+        [InlineData(100, 6, 105.02)]
+        [InlineData(100, 12, 109.88)]
+        [InlineData(100, 24, 120.71)]
+        [InlineData(100, 25, 122.3)]
+        [InlineData(100, 50, 149.24)]
+        public void SolicicarCalculoResultadosLiquido(decimal valorAplicado, int prazo, Decimal liquido)
         {
             var cmd = new CalcularCdbCommand();
             cmd.Prazo = prazo;
@@ -91,7 +91,31 @@ namespace B3.Domain.Test
 
 
             //Assert
-            Assert.True(result.Liquido > 0);
+            Assert.Equal(result.Liquido, liquido);
+        }
+
+
+
+        [Theory]
+        [InlineData(100, 6, 106.47)]
+        [InlineData(100, 12, 112.35)]
+        [InlineData(100, 24, 125.11)]
+        [InlineData(100, 25, 126.23)]
+        [InlineData(100, 50, 157.92)]
+        public void SolicicarCalculoResultadosBruto(decimal valorAplicado, int prazo, Decimal bruto)
+        {
+            var cmd = new CalcularCdbCommand();
+            cmd.Prazo = prazo;
+            cmd.ValorAplicado = valorAplicado;
+
+
+            //Act
+            ICdbService cdbService = new CdbService();
+            var result = cdbService.Calcular(cmd);
+
+
+            //Assert
+            Assert.Equal(result.Bruto, bruto);
         }
     }
 }
