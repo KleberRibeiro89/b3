@@ -10,7 +10,7 @@ using B3.Domain.Services.Interfaces;
 
 namespace B3.Domain.Test
 {
-    
+
     public class CdbTest
     {
         [Fact(DisplayName = "Solicitar Calculo de Cdb Com valor Positivo")]
@@ -25,10 +25,10 @@ namespace B3.Domain.Test
             //Act
             ICdbService cdbService = new CdbService();
             var result = cdbService.Calcular(cmd);
-            
+
 
             //Assert
-            Assert.Equal(result.ToString(), new CalcularCdbCommandResult().ToString());
+            Assert.True(result.Liquido > 0);
         }
 
         [Fact(DisplayName = "Solicitar Calculo de Cdb Com valor Negativo")]
@@ -44,10 +44,10 @@ namespace B3.Domain.Test
             ICdbService cdbService = new CdbService();
             var result = cdbService.Calcular(cmd);
 
-            
+
 
             //Assert
-            Assert.Equal(result.Data.Any(x => x.Message.Equals("")), true);
+            Assert.True(result.Data.Any(x => x.Key.Equals("Informar um Valor Monetário Positivo")));
 
         }
     }
