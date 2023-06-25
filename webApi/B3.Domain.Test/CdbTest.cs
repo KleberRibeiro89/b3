@@ -72,7 +72,7 @@ namespace B3.Domain.Test
 
         }
 
-        [Theory]
+        [Theory(DisplayName = "Testar Cálculo, resultado Líquido")]
         [InlineData(100, 6, 105.02)]
         [InlineData(100, 12, 109.88)]
         [InlineData(100, 24, 120.71)]
@@ -96,7 +96,7 @@ namespace B3.Domain.Test
 
 
 
-        [Theory]
+        [Theory(DisplayName = "Testar Cálculo, resultado Bruto")]
         [InlineData(100, 6, 106.47)]
         [InlineData(100, 12, 112.35)]
         [InlineData(100, 24, 125.11)]
@@ -116,6 +116,22 @@ namespace B3.Domain.Test
 
             //Assert
             Assert.Equal(result.Bruto, bruto);
+        }
+
+
+        [Fact]
+        public void ValidarCalcularCdbCommand()
+        {
+            //Arange
+            var cmd = new CalcularCdbCommand();
+            cmd.Prazo = 2;
+            cmd.ValorAplicado = 100;
+
+            //Act
+            cmd.Validar();
+
+            //Assert
+            Assert.True(cmd.IsValid);
         }
     }
 }
