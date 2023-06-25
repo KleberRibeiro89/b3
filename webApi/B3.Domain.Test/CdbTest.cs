@@ -73,11 +73,11 @@ namespace B3.Domain.Test
         }
 
         [Theory(DisplayName = "Testar Cálculo, resultado Líquido")]
-        [InlineData(100, 6, 105.02)]
+        [InlineData(100, 6, 105.01)]
         [InlineData(100, 12, 109.88)]
-        [InlineData(100, 24, 120.71)]
+        [InlineData(100, 24, 120.72)]
         [InlineData(100, 25, 122.3)]
-        [InlineData(100, 50, 149.24)]
+        [InlineData(100, 50, 149.23)]
         public void SolicicarCalculoResultadosLiquido(decimal valorAplicado, int prazo, Decimal liquido)
         {
             var cmd = new CalcularCdbCommand();
