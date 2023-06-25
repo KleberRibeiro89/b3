@@ -28,7 +28,7 @@ jobs:
         run: dotnet build .\webApi\b3.Api\ --configuration Release
 
       - name: Run tests
-        run: dotnet test .\webApi\B3.Domain.Test\ --no-build --verbosity normal --configuration Release
+        run: dotnet test .\webApi\B3.Domain.Test\ --no-build --verbosity normal #--configuration Release
           
       - name: Build and analyze
         env:
