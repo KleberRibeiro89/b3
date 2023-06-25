@@ -8,9 +8,8 @@ namespace B3.Domain.Commands
 {
     public abstract class CommandResult
     {
-
         public bool Success { get; set; }
-        public string Message { get; set; } = string.Empty;
+        public string? Message { get; set; }
         public IReadOnlyCollection<Flunt.Notifications.Notification> Data { get; set; } = new List<Flunt.Notifications.Notification>();
     }
 }
