@@ -1,0 +1,94 @@
+.conta {
+  background-image: url(../../assets/imagens/logo-b3-novo.svg);
+  background-position: center;
+  background-color: #003475;
+  color: azure;
+  border-radius: 20px;
+  margin: 50px auto;
+  padding: 20px;
+  max-width: 950px;
+}
+
+h1 {
+  border: solid 1px #839cbb;
+  font-size: 40px;
+  padding: 6px;
+  border-radius: 20px;
+  background-color: #839cbb;
+  text-align: center;
+}
+
+h2 {
+  color: #ffffff;
+  line-height: 30px;
+  margin-bottom: 20px;
+
+}
+
+button {
+  border-radius: 10px;
+  border: none;
+  padding: 8px;
+  font-size: 20px;
+  background: #ffd862 radial-gradient(circle, transparent 1%, #ffe8a1 1%) center/15000%;
+  color: #002c63;
+  margin: 10px;
+  transition: transform 0.3s;
+}
+
+button:hover {
+  background-color: #f3cf61;
+  transform: scale(1.1);
+}
+
+.valores {
+  width: 80%;
+  padding: 10px;
+  background-color: #839cbb;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  margin: 50px auto;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+input {
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  outline: 1px;
+  text-align: center;
+  width: 120px;
+}
+
+input:focus {
+  outline: 1px;
+  border: none;
+}
+
+#resultado{
+  background-color: #f3cf61;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  margin: 10px auto;
+  width: 50%;
+}
+
+.container_display{
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+
+label{
+  margin-right: 10px;
+  font-size: 20px;
+}

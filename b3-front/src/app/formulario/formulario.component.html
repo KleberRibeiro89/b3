@@ -1,0 +1,39 @@
+<section class="conta container-md ">
+  <h1>{{title}}</h1>
+  <form id="formulario">
+      <div class="valores">
+          <div class="primeiro_valor">
+              <h2>Qual o valor Monetário?</h2>
+              <input type="currency" id="valor" min="0" step="any"
+                  [(ngModel)]="valorAplicado" (blur)="limparInput()" required>
+          </div>
+
+          <div class="segundo_valor">
+              <h2 style="letter-spacing: -2px;">Qual é o prazo em meses?</h2>
+              <input type="number" id="prazo" step="any" min="2"
+                  [(ngModel)]="prazo" (blur)="limparInput()" required>
+          </div>
+      </div>
+
+      <div class="calcular">
+          <button (click)="calcular()">Calcular</button>
+      </div>
+
+  </form>
+</section>
+
+<section id="resultado" class="container-sm">
+  <h2 style="color: #003475">Aqui estão os resultados</h2>
+  <div class="container_display">
+      <div class="resultado_liquido">
+          <label for>Resultado liquído:</label>
+          <input type="text" disabled [(ngModel)]="valorLiquido" name id="resultado_liquido">
+      </div>
+      <div class="resultado_bruto">
+          <label style="margin-left: 15px;" for>Resultado bruto:</label>
+          <input type="text" disabled [(ngModel)]="valorBruto" name id="resultado_liquido">
+      </div>
+  </div>
+</section>
+
+<footer></footer>
