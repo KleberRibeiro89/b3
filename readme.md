@@ -14,7 +14,8 @@ Clone este repositório:
 
 Instale as dependências do Angular: 
 ```bash
-  npm install --ignore-scripts .\b3-front\
+  cd .\b3-front\
+  npm install --ignore-scripts 
 ```
 
 
@@ -25,13 +26,13 @@ Instale as dependências do .NET, estando na pasta principal rodar os comandos:
   dotnet build 
 ```
 
-Rode os teste do .NET, estando na pasta principal rodar os comandos: 
+Rode os testes do .NET, estando na pasta principal rodar os comandos: 
 ```bash
   cd .\webApi\B3.Domain.Test\
   dotnet test --collect:"Code Coverage"
 ```
 
-Rode os teste do angular: 
+Rode os testes do angular, estando na pasta principal rodar os comandos: : 
 ```bash
   cd .\b3-front\
   ng test --code-coverage
