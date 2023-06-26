@@ -37,7 +37,7 @@ jobs:
         run: dotnet sonarscanner begin /k:"kleberribeiro89_b3" /o:"kleberribeiro89" /d:sonar.login="8e50f722a630906acee4186524aee87b1d82c82a" /d:sonar.host.url="https://sonarcloud.io"
 
       - name: Build and Analyze with SonarQube
-        run: dotnet build && dotnet sonarscanner end /d:sonar.login="8e50f722a630906acee4186524aee87b1d82c82a"
+        run: dotnet build .\webApi\b3.Api\ && dotnet sonarscanner .\webApi\b3.Api\ end /d:sonar.login="8e50f722a630906acee4186524aee87b1d82c82a"
           
       # - name: Build and analyze
         # env:
