@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "b3-front": "file:b3-front"
+  }
+}
