@@ -38,6 +38,7 @@ namespace B3.Domain.Services.Implementation
 
             return new CalcularCdbCommandResult
             {
+                Success = true,
                 Bruto = valorBruto,
                 Liquido = CalcularIr(new CalcularIrCommand 
                 { 
