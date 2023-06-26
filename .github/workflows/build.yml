@@ -1,52 +1,55 @@
-name: Build and Analyze
-
+name: SonarCloud
 on:
   push:
     branches:
       - main
   pull_request:
-    branches:
-      - main
-
+    types: [opened, synchronize, reopened]
 jobs:
   build:
+    name: Build and analyze
     runs-on: windows-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
         with:
-          dotnet-version: 7.0.305
+          java-version: 11
+          distribution: 'zulu' # Alternative distribution options are available.
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
           
-      - name: Restore dependencies
-        run: dotnet restore .\webApi\b3.Api\
-        
-      - name: Build
-        run: dotnet build .\webApi\b3.Api\ --configuration Release
-
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v3
+        with:
+          path: ~\sonar\cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+          
+      - name: Cache SonarCloud scanner
+        id: cache-sonar-scanner
+        uses: actions/cache@v3
+        with:
+          path: .\.sonar\scanner
+          key: ${{ runner.os }}-sonar-scanner
+          restore-keys: ${{ runner.os }}-sonar-scanner
+          
       - name: Run tests
         run: dotnet test .\webApi\B3.Domain.Test\ 
         
-      - name: Install SonarQube Scanner
-        run: dotnet tool install --global dotnet-sonarscanner
-
-      - name: SonarQube analysis
-        run: dotnet sonarscanner begin /k:"kleberribeiro89_b3" /o:"kleberribeiro89" /d:sonar.login="8e50f722a630906acee4186524aee87b1d82c82a" /d:sonar.host.url="https://sonarcloud.io"
-
-      - name: Build and Analyze with SonarQube
-        run: dotnet build .\webApi\b3.Api\ && dotnet sonarscanner end /d:sonar.login="8e50f722a630906acee4186524aee87b1d82c82a"
-          
-      # - name: Build and analyze
-        # env:
-          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          # SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        # shell: powershell
-        # run: |
-          # .\.sonar\scanner\dotnet-sonarscanner begin /k:"kleberribeiro89_b3" /o:"kleberribeiro89" /d:sonar.login="8e50f722a630906acee4186524aee87b1d82c82a" /d:sonar.host.url="https://sonarcloud.io"
-          # dotnet --version
-          # .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="8e50f722a630906acee4186524aee87b1d82c82a"
-      
+      - name: Install SonarCloud scanner
+        if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
+        shell: powershell
+        run: |
+          New-Item -Path .\.sonar\scanner -ItemType Directory
+          dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+      - name: Build and analyze
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        shell: powershell
+        run: |
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"kleberribeiro89_b3" /o:"kleberribeiro89" /d:sonar.login="8e50f722a630906acee4186524aee87b1d82c82a" /d:sonar.host.url="https://sonarcloud.io"
+          dotnet build .\webApi\b3.Api\ && dotnet sonarscanner
+          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="8e50f722a630906acee4186524aee87b1d82c82a"
   
