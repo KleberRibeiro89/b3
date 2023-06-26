@@ -21,8 +21,6 @@ jobs:
         with:
           dotnet-version: 7.0.305
           
-      - name: Setup .NET Core 3       
-
       - name: Restore dependencies
         run: dotnet restore .\webApi\b3.Api\
         
