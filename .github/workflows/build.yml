@@ -34,7 +34,19 @@ jobs:
         run: dotnet tool install --global dotnet-sonarscanner
 
       - name: SonarQube analysis
-        run: dotnet sonarscanner begin /k:"kleberribeiro89_b3" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="8e50f722a630906acee4186524aee87b1d82c82a" /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml" /d:sonar.coverage.exclusions="**/Migrations/**" /d:sonar.test.inclusions="**/*Tests.cs" /d:sonar.test.exclusions="**/Migrations/**"
+        run: dotnet sonarscanner begin /k:"kleberribeiro89_b3" /o:"kleberribeiro89" /d:sonar.login="8e50f722a630906acee4186524aee87b1d82c82a" /d:sonar.host.url="https://sonarcloud.io"
 
       - name: Build and Analyze with SonarQube
-        run: dotnet build && dotnet sonarscanner end /d:sonar.login="8e50f722a630906acee4186524aee87b1d82c82a"    
+        run: dotnet build && dotnet sonarscanner end /d:sonar.login="8e50f722a630906acee4186524aee87b1d82c82a"
+          
+      # - name: Build and analyze
+        # env:
+          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          # SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        # shell: powershell
+        # run: |
+          # .\.sonar\scanner\dotnet-sonarscanner begin /k:"kleberribeiro89_b3" /o:"kleberribeiro89" /d:sonar.login="8e50f722a630906acee4186524aee87b1d82c82a" /d:sonar.host.url="https://sonarcloud.io"
+          # dotnet --version
+          # .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="8e50f722a630906acee4186524aee87b1d82c82a"
+      
+  
