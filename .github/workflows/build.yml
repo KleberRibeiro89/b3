@@ -35,7 +35,7 @@ jobs:
           restore-keys: ${{ runner.os }}-sonar-scanner
           
       - name: Run tests
-        run: dotnet test .\webApi\B3.Domain.Test\ --verbosity normal --configuration Release
+        run: dotnet test .\webApi\B3.Domain.Test\ --verbosity normal --configuration Release --collect:"Code Coverage"
         
       - name: Install SonarCloud scanner
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
