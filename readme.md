@@ -2,13 +2,14 @@
 
 
 ## Tecnologias Utilizadas
-Angular 13.0.4
-.NET 8.0.100-preview.5.23303.2
+- Angular 13.0.4
+- .NET 8.0.100-preview.5.23303.2
 
 ## Instalação
 Clone este repositório: 
 ```bash
   git clone https://github.com/KleberRibeiro89/b3.git
+  cd .\b3\
 ```
 
 Instale as dependências do Angular: 
@@ -23,30 +24,37 @@ Instale as dependências do .NET:
   dotnet build .\webApi\B3.Api\
 ```
 
-Rote os teste do .NET: 
+Rode os teste do .NET: 
 ```bash
   dotnet test .\webApi\B3.Domain.Test\ --collect:"Code Coverage"
 ```
 
-Para executar o projeto Angular:
+Rode os teste do angular: 
+```bash
+  cd .\b3-front\
+  ng test --code-coverage
+```
 
-Copy code
-ng serve
-Para executar o projeto .NET:
+Para executar o projeto .NET voltar a pasta principal do projeto e rodar os comandos:
+```bash
+  cd .\webApi\B3.Api\
+  dotnet watch run 
+```
 
-arduino
-Copy code
-dotnet run
-Estrutura do Projeto
-Descreva a estrutura do projeto, destacando os principais diretórios e arquivos.
-Testes
-Explique como executar os testes automatizados do projeto.
-Contribuição
-Explique como outros desenvolvedores podem contribuir com o projeto.
-Licença
-Indique a licença do projeto.
-Contato
-Forneça informações de contato, como e-mail ou links para redes sociais, para que as pessoas possam entrar em contato com você em caso de dúvidas ou contribuições.
-Certifique-se de adaptar as informações acima de acordo com o seu projeto específico. Inclua seções relevantes para o seu projeto, como exemplos de código, requisitos de sistema, capturas de tela ou qualquer outra informação que seja útil para os usuários ou desenvolvedores que interagem com o projeto.
+Para executar o projeto Angular voltar a pasta principal do projeto e rodar os comandos:
+```bash
+  cd  .\b3-front\
+  ng serve 
+```
 
-Lembre-se de que o README.md serve como uma documentação inicial do seu projeto e deve ser claro, conciso e fornecer informações relevantes para facilitar a compreensão e utilização do projeto por outras pessoas.
+
+## Testes
+Para visualizar a cobertura de testes do backend existe um arquivo
+```bash
+  cd  .\coveragereport\index.html
+```
+
+
+## Acessar o projeto
+Para acessar basta clicar no link
+[Cálculo CDB](https://localhost:4200/).
