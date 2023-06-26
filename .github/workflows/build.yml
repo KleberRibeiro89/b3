@@ -50,6 +50,7 @@ jobs:
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"kleberribeiro89_b3" /o:"kleberribeiro89" /d:sonar.login="8e50f722a630906acee4186524aee87b1d82c82a" /d:sonar.host.url="https://sonarcloud.io"
-          dotnet build .\webApi\b3.Api\ && dotnet sonarscanner
+          dotnet build .\webApi\b3.Api\ 
+          dotnet sonarscanner
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="8e50f722a630906acee4186524aee87b1d82c82a"
   
