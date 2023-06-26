@@ -1,4 +1,7 @@
+import { CdbCommandModel } from '../models/CdbCommandModel';
 import { Component, OnInit } from '@angular/core';
+import { CdbService } from '../services/cdb.service';
+import { CdbResultModel } from '../models/CdbResultModel';
 
 @Component({
   selector: 'app-formulario',
@@ -7,24 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormularioComponent {
   title = 'Calculadora CDB';
-  valorAplicado: number | undefined;
-  prazo: number | undefined;
 
-  valorBruto: number;
-  valorLiquido: number;
-  constructor() {
-    this.valorBruto = 0;
-    this.valorLiquido = 0;
+  model: CdbCommandModel = new CdbCommandModel();
+  result!: CdbResultModel;
+
+  constructor(private _service: CdbService) {
+
   }
 
   limparInput() {
-    this.valorAplicado = 0;
-    this.prazo = 1;
+    this.model.prazo = 0;
+    this.model.valorAplicado = 0;
   }
 
   calcular() {
-    this.valorLiquido = 100.10;
-    this.valorBruto = 101.10;
+    this._service.calcularCDB(this.model)
+      .subscribe({
+        next: (result) => {
+          this.result = result;
+        },
+        error: (error) => {
+          this.result = error;
+        }
+      })
   }
 
 }

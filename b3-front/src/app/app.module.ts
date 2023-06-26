@@ -5,6 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormularioComponent } from './formulario/formulario.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { CdbService } from './services/cdb.service';
+
+
 
 @NgModule({
   declarations: [
@@ -14,9 +18,10 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
-  ],
-  providers: [],
+    FormsModule,
+    HttpClientModule
+    ],
+  providers: [HttpClientModule, CdbService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

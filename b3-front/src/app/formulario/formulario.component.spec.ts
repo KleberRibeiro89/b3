@@ -20,18 +20,18 @@ describe('FormularioComponent', () => {
   });
 
   it('deve calcular corretamente o  total', () => {
-    component.prazo = 6;
-    component.valorAplicado = 100;
+    component.model.prazo = 6;
+    component.model.valorAplicado = 100;
 
     component.calcular();
-    expect(component.valorBruto).toBe(100);
+    expect(component.result.bruto).toBe(100);
   });
 
   it('deve exibir o total no template', () => {
-    component.prazo = 6;
-    component.valorAplicado = 100;
+    component.model.prazo = 6;
+    component.model.valorAplicado = 100;
 
     component.calcular();
-    expect(component.valorLiquido).toBe(100);
+    expect(component.result.liquido).toBe(100);
   });
 });
