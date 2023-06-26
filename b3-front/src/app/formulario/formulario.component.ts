@@ -1,3 +1,4 @@
+import { CdbResultDataModel } from './../models/CdbResultModel';
 import { CdbCommandModel } from '../models/CdbCommandModel';
 import { Component, OnInit } from '@angular/core';
 import { CdbService } from '../services/cdb.service';
@@ -18,7 +19,10 @@ export class FormularioComponent {
   result!: CdbResultModel;
 
   constructor(private _service: CdbService) {
-    this.result = {} as CdbResultModel;
+    this.result = {  } as CdbResultModel;
+    this.result.bruto = 0;
+    this.result.liquido = 0;
+    this.result.data = [];
   }
 
 
