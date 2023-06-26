@@ -18,15 +18,17 @@ Instale as dependências do Angular:
 ```
 
 
-Instale as dependências do .NET: 
+Instale as dependências do .NET, estando na pasta principal rodar os comandos: 
 ```bash
-  dotnet restore .\webApi\B3.Api\
-  dotnet build .\webApi\B3.Api\
+  cd .\webApi\B3.Api\
+  dotnet restore 
+  dotnet build 
 ```
 
-Rode os teste do .NET: 
+Rode os teste do .NET, estando na pasta principal rodar os comandos: 
 ```bash
-  dotnet test .\webApi\B3.Domain.Test\ --collect:"Code Coverage"
+  cd .\webApi\B3.Domain.Test\
+  dotnet test --collect:"Code Coverage"
 ```
 
 Rode os teste do angular: 
