@@ -34,7 +34,7 @@ describe('FormularioComponent', () => {
     component.calcular()
     const result = await lastValueFrom(service.calcularCDB(component.model));
 
-    expect(component.result.bruto > 0).toBeTrue();
+    expect(component.result.bruto > 0).toBe(true);
 
 
   });
