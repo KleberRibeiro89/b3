@@ -3,5 +3,10 @@ export interface CdbResultModel {
   liquido: number;
   success: boolean;
   message: string;
-  data: object[];
+  data: CdbResultDataModel[];
+}
+
+export interface CdbResultDataModel {
+  key: string;
+  message: string;
 }
