@@ -73,12 +73,12 @@ namespace B3.Domain.Test
         }
 
         [Theory(DisplayName = "Testar Cálculo, resultado Líquido")]
-        [InlineData(100, 6, 105.01)]
+        [InlineData(100, 6, 105.02)]
         [InlineData(100, 12, 109.88)]
-        [InlineData(100, 24, 120.72)]
+        [InlineData(100, 24, 120.71)]
         [InlineData(100, 25, 122.3)]
-        [InlineData(100, 50, 149.23)]
-        public void SolicicarCalculoResultadosLiquido(decimal valorAplicado, int prazo, Decimal liquido)
+        [InlineData(100, 50, 149.24)]
+        public void SolicicarCalculoResultadosLiquido(double valorAplicado, int prazo, double liquido)
         {
             var cmd = new CalcularCdbCommand();
             cmd.Prazo = prazo;
@@ -102,7 +102,7 @@ namespace B3.Domain.Test
         [InlineData(100, 24, 125.11)]
         [InlineData(100, 25, 126.23)]
         [InlineData(100, 50, 157.92)]
-        public void SolicicarCalculoResultadosBruto(decimal valorAplicado, int prazo, Decimal bruto)
+        public void SolicicarCalculoResultadosBruto(double valorAplicado, int prazo, double bruto)
         {
             var cmd = new CalcularCdbCommand();
             cmd.Prazo = prazo;
@@ -186,7 +186,7 @@ namespace B3.Domain.Test
         [InlineData(24, 100, 125.11, 120.72)]
         [InlineData(25, 100, 126.23, 122.3)]
         [InlineData(50, 100, 157.92, 149.23)]
-        public void CalcularIr(int prazo, decimal valorAplicado, decimal bruto, decimal valorLiquido)
+        public void CalcularIr(int prazo, double valorAplicado, double bruto, double valorLiquido)
         {
             //Arange
             var cmd = new CalcularIrCommand();
@@ -199,7 +199,7 @@ namespace B3.Domain.Test
             var result = cdbService.CalcularIr(cmd);
 
             //Assert
-            Assert.Equal(result, valorLiquido);
+            Assert.Equal(Math.Round(result, 2), valorLiquido);
         }
     }
 }

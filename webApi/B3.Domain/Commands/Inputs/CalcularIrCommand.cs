@@ -10,8 +10,8 @@ namespace B3.Domain.Commands.Inputs
     {
         public int Prazo { get; set; }
 
-        public decimal ValorAplicado { get; set; }
+        public double ValorAplicado { get; set; }
 
-        public decimal Bruto{ get; set; }
+        public double Bruto { get; set; }
     }
 }

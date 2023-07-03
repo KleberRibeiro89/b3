@@ -14,7 +14,7 @@ import { DecimalPipe } from '@angular/common';
 export class FormularioComponent {
   title = 'Calculadora CDB';
 
-  valorMonetario!: string;
+  valorMonetario: string = "";
   model: CdbCommandModel = new CdbCommandModel();
   result!: CdbResultModel;
 

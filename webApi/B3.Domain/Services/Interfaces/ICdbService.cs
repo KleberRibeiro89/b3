@@ -12,6 +12,6 @@ namespace B3.Domain.Services.Interfaces
     {
         CalcularCdbCommandResult Calcular(CalcularCdbCommand command);
 
-        decimal CalcularIr(CalcularIrCommand command);
+        double CalcularIr(CalcularIrCommand command);
     }
 }

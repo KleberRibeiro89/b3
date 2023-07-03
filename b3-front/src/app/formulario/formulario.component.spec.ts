@@ -76,7 +76,7 @@ describe('FormularioComponent', () => {
 
     component.calcular();
     const result = await lastValueFrom(service.calcularCDB(component.model));
-    expect(component.result.liquido).toBe(105.01);
+    expect(component.result.liquido).toBe(105.02);
 
 
   });

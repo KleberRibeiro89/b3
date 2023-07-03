@@ -10,7 +10,7 @@ namespace B3.Domain.Commands.Inputs
 {
     public class CalcularCdbCommand : Notifiable<Notification>
     {
-        public decimal ValorAplicado { get; set; }
+        public double ValorAplicado { get; set; }
 
         public int Prazo { get; set; }
 

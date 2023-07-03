@@ -21,9 +21,9 @@ namespace B3.Domain.Commands.Results
             this.Data = data;
         }
 
-        public decimal Bruto { get; set; }
+        public double Bruto { get; set; }
 
-        public decimal Liquido { get; set; }
+        public double Liquido { get; set; }
 
 
     }

@@ -4,7 +4,7 @@
     <div class="valores">
       <div class="primeiro_valor">
         <h2>Qual o valor Monetário?</h2>
-        <input id="valorAplicado" min="0" step="any" [(ngModel)]="valorMonetario" (blur)="formatCurrency($event)" name="valorAplicado" required>
+        <input id="valorAplicado" type="text" min="0" step="any" [(ngModel)]="valorMonetario" (blur)="formatCurrency($event)" name="valorAplicado" required>
       </div>
 
       <div class="segundo_valor">
