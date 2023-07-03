@@ -12,8 +12,8 @@ namespace B3.Domain.Services.Implementation
 {
     public class CdbService : ICdbService
     {
-        private const double Tb = (108 / 100);
-        private const double Cdi = (0.9 / 100);
+        private const double Tb = (108.0 / 100.0);
+        private const double Cdi = (0.9 / 100.0);
         public CalcularCdbCommandResult Calcular(CalcularCdbCommand command)
         {
             command.Validar();
@@ -23,17 +23,11 @@ namespace B3.Domain.Services.Implementation
                 return new CalcularCdbCommandResult(command.IsValid, "Objeto inválido", command.Notifications);
             }
 
-            double valorBruto = 0;
+            double valorBruto = command.ValorAplicado;
             for (int i = 0; i < command.Prazo; i++)
             {
-                if (i == 0)
-                {
-                    valorBruto = command.ValorAplicado * (1 + (Cdi * Tb));
-                }
-
                 valorBruto *= (1 + (Cdi * Tb));
             }
-
 
             return new CalcularCdbCommandResult
             {
@@ -46,7 +40,6 @@ namespace B3.Domain.Services.Implementation
                     ValorAplicado = command.ValorAplicado
                 }), 2)
             };
-
         }
 
         public double CalcularIr(CalcularIrCommand command)

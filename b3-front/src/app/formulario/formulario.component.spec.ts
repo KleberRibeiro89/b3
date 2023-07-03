@@ -76,7 +76,7 @@ describe('FormularioComponent', () => {
 
     component.calcular();
     const result = await lastValueFrom(service.calcularCDB(component.model));
-    expect(component.result.liquido).toBe(105.02);
+    expect(component.result.liquido).toBe(104.63);
 
 
   });
@@ -88,7 +88,7 @@ describe('FormularioComponent', () => {
 
     component.calcular();
     const result = await lastValueFrom(service.calcularCDB(component.model));
-    expect(component.result.liquido).toBe(109.88);
+    expect(component.result.liquido).toBe(109.85);
 
   });
 
@@ -99,7 +99,7 @@ describe('FormularioComponent', () => {
 
     component.calcular();
     const result = await lastValueFrom(service.calcularCDB(component.model));
-    expect(component.result.bruto).toBe(106.47);
+    expect(component.result.bruto).toBe(105.98);
 
   });
 });

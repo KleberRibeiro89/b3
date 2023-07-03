@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace B3.Domain.Commands.Results
@@ -23,6 +25,7 @@ namespace B3.Domain.Commands.Results
 
         public double Bruto { get; set; }
 
+        
         public double Liquido { get; set; }
 
 
