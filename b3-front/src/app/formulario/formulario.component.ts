@@ -27,7 +27,7 @@ export class FormularioComponent {
 
 
   calcular(): void {
-    this.model.valorAplicado = Number(this.valorMonetario.replace("R$", "").replace(' ', '').replace(',', '.'));
+    this.model.valorAplicado = Number(this.valorMonetario.replace("R$", "").replace(' ', '').replace('.','').replace(',', '.'));
     this._service.calcularCDB(this.model)
       .subscribe({
         next: (result) => {
@@ -40,9 +40,7 @@ export class FormularioComponent {
   }
 
   formatCurrency(event: any): void {
-
-    let number = event.target.value.replace("R$", "").replace(' ', '').replace(',', '.');
-
+    let number = event.target.value.replace("R$", "").replace(' ', '').replace('.','').replace(',', '.');
 
     this.valorMonetario = new Intl.NumberFormat('pt-BR', {
       style: 'currency',
