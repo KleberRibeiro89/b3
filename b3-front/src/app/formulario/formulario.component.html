@@ -25,13 +25,13 @@
   <h2 style="color: #003475">Aqui estão os resultados</h2>
   <div *ngIf="result.data.length === 0" class="container_display">
     <div class="resultado_liquido">
-      <label for>Resultado liquído:</label>
+      <label for>Resultado Bruto:</label>
 
-      <input type="text" disabled   [value]="result.liquido | currency: 'BRL': 'symbol-narrow': '1.2-2'"   name="resultado_bruto" id="resultado_bruto">
+      <input type="text" disabled   [value]="result.bruto| currency: 'BRL': 'symbol-narrow': '1.2-2'"   name="resultado_bruto" id="resultado_bruto">
     </div>
     <div class="resultado_bruto">
       <label for>Resultado liquído:</label>
-      <input type="text" disabled  [value]="result.bruto  | currency: 'BRL': 'symbol-narrow': '1.2-2'" name="resultado_liquido" id="resultado_liquido">
+      <input type="text" disabled  [value]="result.liquido  | currency: 'BRL': 'symbol-narrow': '1.2-2'" name="resultado_liquido" id="resultado_liquido">
 
     </div>
   </div>

@@ -19,7 +19,7 @@ export class FormularioComponent {
   result!: CdbResultModel;
 
   constructor(private _service: CdbService) {
-    this.result = {  } as CdbResultModel;
+    this.result = {} as CdbResultModel;
     this.result.bruto = 0;
     this.result.liquido = 0;
     this.result.data = [];
@@ -27,7 +27,7 @@ export class FormularioComponent {
 
 
   calcular(): void {
-    this.model.valorAplicado = Number(this.valorMonetario.replace("R$", "").replace(' ', '').replace('.','').replace(',', '.'));
+    this.model.valorAplicado = Number(this.valorMonetario.replace("R$", "").replace(' ', '').replace(/\./g, "").replace(',', '.'));
     this._service.calcularCDB(this.model)
       .subscribe({
         next: (result) => {
@@ -40,7 +40,7 @@ export class FormularioComponent {
   }
 
   formatCurrency(event: any): void {
-    let number = event.target.value.replace("R$", "").replace(' ', '').replace('.','').replace(',', '.');
+    let number = event.target.value.replace("R$", "").replace(' ', '').replace(/\./g, "").replace(',', '.');
 
     this.valorMonetario = new Intl.NumberFormat('pt-BR', {
       style: 'currency',

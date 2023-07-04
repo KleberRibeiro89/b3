@@ -35,8 +35,6 @@ describe('FormularioComponent', () => {
     const result = await lastValueFrom(service.calcularCDB(component.model));
 
     expect(component.result.bruto > 0).toBe(true);
-
-
   });
 
   it('Solicitar Calculo de Cdb Com valor Negativo', async () => {
@@ -49,9 +47,6 @@ describe('FormularioComponent', () => {
       let objError = error.error;
       expect(objError.liquido).toBe(0)
     });
-
-
-
   });
 
   it('Solicitar Calculo de Cdb Com Mes igual á 1', async () => {
