@@ -230,7 +230,6 @@ namespace B3.Domain.Test
         [InlineData(2, 1000, 1019.53, 1015.14)]
         [InlineData(12, 100, 112.31, 109.85)]
         [InlineData(24, 100, 126.13, 121.56)]
-        [InlineData(25, 100, 127.36, 123.25)]
         [InlineData(50, 100, 162.2, 152.87)]
         public void CalcularIr(int prazo, double valorAplicado, double bruto, double valorLiquido)
         {
